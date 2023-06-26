@@ -5,7 +5,7 @@ ENV KC_HEALTH_ENABLED=false
 ENV KC_METRICS_ENABLED=false
 
 # Configure a database vendor
-ENV KC_DB=msyql
+ENV KC_DB=mysql
 
 WORKDIR /opt/keycloak
 # for demonstration purposes only, please make sure to use proper certificates in production instead
