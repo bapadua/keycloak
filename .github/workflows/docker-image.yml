@@ -15,11 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --build-arg KC_DB=${{ secrets.KEYCLOAK_DB}} \
+      run: docker build \
+        --tag ${{ secrets.DOCKERHUB_USERNAME }}/keycloak
+        --build-arg KC_DB=${{ secrets.KEYCLOAK_DB}} \
         --build-arg KC_DB_URL=${{ secrets.KEYCLOAK_DB_URL}} \
         --build-arg KC_DB_USERNAME=${{ secrets.KEYCLOAK_DB_USERNAME}} \
         --build-arg KC_DB_PASSWORD=${{ secrets.KEYCLOAK_DB_PASSWORD}} \
         --build-arg KC_HOSTNAME=${{ secrets.KEYCLOAK_HOSTNAME}} \
         --build-arg KEYCLOAK_ADMIN=${{ secrets.KEYCLOAK_ADMIN}} \
         --build-arg KEYCLOAK_ADMIN_PASSWORD=${{ secrets.KEYCLOAK_ADMIN_PASSWORD}} \
-        . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/keycloak
+        .
