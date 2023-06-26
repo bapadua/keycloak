@@ -1,5 +1,5 @@
 FROM quay.io/keycloak/keycloak:latest as builder
-
+#version 1.0
 # Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
