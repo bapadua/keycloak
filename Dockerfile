@@ -5,7 +5,7 @@ ENV KC_HEALTH_ENABLED=false
 ENV KC_METRICS_ENABLED=false
 
 # Configure a database vendor
-ENV KC_DB=${{ secrets.KEYCLOAK_DB }}
+ENV KC_DB=msyql
 
 WORKDIR /opt/keycloak
 # for demonstration purposes only, please make sure to use proper certificates in production instead
@@ -16,12 +16,12 @@ FROM quay.io/keycloak/keycloak:latest
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 # change these values to point to a running db instance
-ENV KC_DB=${{ secrets.KEYCLOAK_DB }}
-ENV KC_DB_URL=${{ secrets.KEYCLOAK_DB_URL }}
-ENV KC_DB_USERNAME=${{ secrets.KEYCLOAK_DB_USERNAME }}
-ENV KC_DB_PASSWORD=${{ secrets.KEYCLOAK_DB_PASSWORD }}
-ENV KC_HOSTNAME=${{ secrets.KEYCLOAK_HOSTNAME }}
-ENV KEYCLOAK_ADMIN=${{ secrets.KEYCLOAK_ADMIN }}
-ENV KEYCLOAK_ADMIN_PASSWORD=${{ secrets.KEYCLOAK_ADMIN_PASSWORD }}
+ENV KC_DB=mysql
+ENV KC_DB_URL=jdbc:mysql://localhost:3306/keycloak
+ENV KC_DB_USERNAME=root
+ENV KC_DB_PASSWORD=password
+ENV KC_HOSTNAME=localhost
+ENV KEYCLOAK_ADMIN=admin
+ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
