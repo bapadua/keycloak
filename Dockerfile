@@ -15,13 +15,4 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:latest
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
-# change these values to point to a running db instance
-ENV KC_DB=mysql
-ENV KC_DB_URL=jdbc:mysql://localhost:3306/keycloak
-ENV KC_DB_USERNAME=root
-ENV KC_DB_PASSWORD=password
-ENV KC_HOSTNAME=localhost
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=admin
-
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
