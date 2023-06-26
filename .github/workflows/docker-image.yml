@@ -23,7 +23,7 @@ jobs:
       name: build docker image
       uses: docker/build-push-action@v2
       with: 
-        context: .
+        context: ./
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/keycloak
         build-args: | 
